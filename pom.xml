@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+
+    Is Due - Your one-stop app for managing online statement of accounts
+    Copyright © 2017 Reijhanniel Jearl Campos (devcsrj@apache.org)
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program. If not, see <http://www.gnu.org/licenses/>.
+
+-->
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.github.devcsrj</groupId>
+    <artifactId>is-due</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <inceptionYear>2017</inceptionYear>
+
+    <name>Is Due</name>
+    <description>Your one-stop app for managing online statement of accounts</description>
+
+    <developers>
+        <developer>
+            <id>devcsrj</id>
+            <name>Reijhanniel Jearl Campos</name>
+            <email>devcsrj@apache.org</email>
+            <url>devcsrj.github.io</url>
+            <timezone>+8</timezone>
+        </developer>
+    </developers>
+
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/devcsrj/is-due/issues</url>
+    </issueManagement>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <kotlin.version>1.2.10</kotlin.version>
+        <junit.version>4.11</junit.version>
+    </properties>
+
+
+    <dependencies>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-stdlib</artifactId>
+            <version>${kotlin.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jetbrains.kotlin</groupId>
+            <artifactId>kotlin-test-junit</artifactId>
+            <version>${kotlin.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+
+    <build>
+        <sourceDirectory>src/main/kotlin</sourceDirectory>
+        <testSourceDirectory>src/test/kotlin</testSourceDirectory>
+        <plugins>
+            <plugin>
+                <groupId>org.jetbrains.kotlin</groupId>
+                <artifactId>kotlin-maven-plugin</artifactId>
+                <version>${kotlin.version}</version>
+                <executions>
+                    <execution>
+                        <id>compile</id>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>test-compile</id>
+                        <phase>test-compile</phase>
+                        <goals>
+                            <goal>test-compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.mycila</groupId>
+                <artifactId>license-maven-plugin</artifactId>
+                <version>3.0.rc1</version>
+                <configuration>
+                    <header>com/mycila/maven/plugin/license/templates/GPL-3.txt</header>
+                    <properties>
+                        <owner>Reijhanniel Jearl Campos</owner>
+                        <email>devcsrj@apache.org</email>
+                    </properties>
+                    <excludes>
+                        <exclude>**/io/devcsrj/jobseeker/common/data/</exclude>
+                        <exclude>**/LICENSE</exclude>
+                        <exclude>**/README</exclude>
+                        <exclude>.circleci/</exclude>
+                        <exclude>.idea/</exclude>
+                        <exclude>**/*.properties</exclude>
+                        <exclude>${project.build.directory}/</exclude>
+                        <exclude>**/frontend/</exclude>
+                        <exclude>**/.tmp/</exclude>
+                        <exclude>**/test/resources/**/*.html</exclude>
+                    </excludes>
+                    <mapping>
+                        <kt>JAVADOC_STYLE</kt>
+                    </mapping>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>process-sources</phase>
+                        <goals>
+                            <goal>format</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
