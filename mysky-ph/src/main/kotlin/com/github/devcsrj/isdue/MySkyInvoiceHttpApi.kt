@@ -1,5 +1,5 @@
 /**
- * Is Due | API - Your one-stop app for managing online statement of accounts
+ * Is Due | MySky PH - Your one-stop app for managing online statement of accounts
  * Copyright © 2017 Reijhanniel Jearl Campos (devcsrj@apache.org)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,13 +17,16 @@
  */
 package com.github.devcsrj.isdue
 
-interface InvoiceApi {
+import org.jsoup.nodes.Document
+import retrofit2.Call
+import retrofit2.http.GET
+import retrofit2.http.Headers
+import retrofit2.http.Query
 
-    fun getDues(): List<Invoice>
+internal interface MySkyInvoiceHttpApi {
 
-    fun getPaid(): List<Invoice> {
-        return getPaid(5)
-    }
-
-    fun getPaid(limit: Int): List<Invoice>
+    @GET("/myaccounts/payment-history")
+    @Headers("X-Requested-With: XMLHttpRequest")
+    fun getPaymentHistory(@Query("accountnumber") accountNumber: String,
+                          @Query("year") year: Int): Call<Document>
 }

@@ -1,0 +1,615 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>PROFILE</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="">
+    <meta name="author" content="ABS-CBN">
+
+    <!-- START: OPEN GRAPH -->
+    <meta name="og:title" content="">
+    <meta name="og:type" content="website">
+    <meta name="og:image" content="/Content/assets/img/logo.svg">
+    <meta name="og:url" content="">
+    <meta name="og:site_name" content="SSO">
+    <meta name="og:description" content="">
+    <!-- END: OPEN GRAPH -->
+
+    <!-- START: MOBILE VIEWPORT -->
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <!-- END: MOBILE VIEWPORT -->
+    <!-- END: META -->
+
+    <!-- START: STYLES -->
+    <!-- START: STYLESHEET (APP) -->
+    <!-- END: STYLESHEET (APP) -->
+
+    <!-- START: SSO STYLESHEET -->
+    
+
+    <!-- START: STYLES -->
+    <!-- START: STYLESHEET (APP) -->
+    <!-- UniNav -->
+    <link rel="stylesheet" media="screen" href="http://azuretv2devewu00sca63.blob.core.windows.net/abscbnscripts/universalnav/uninav.css">
+    <link href="/Content/assets/css/rangeslider.css" rel="stylesheet">
+    <link href="/Content/assets/css/jquery.fs.selecter.css" rel="stylesheet">
+    <link href="/Content/assets/css/style.min.css" rel="stylesheet">
+    <link href="/Content/theme/data/flags.css" rel="stylesheet">
+    <link href="/Content/theme/styles/welcome.css" rel="stylesheet">
+    <!-- END: STYLESHEET (APP) -->
+
+    <!-- START: SSO STYLESHEET -->
+
+    <link href="/Scripts/sso/jquery-ui-1.8rc2.custom.css" rel="stylesheet" />
+    <link href="/Content/theme/styles/sso.css" rel="stylesheet" />
+         
+
+    <style type="text/css" title="currentStyle">
+	    #copyLeft
+	    {
+            display:inline-block;
+            -moz-transform: scaleX(-1);
+            -webkit-transform: scaleX(-1);
+            -o-transform: scaleX(-1);
+            transform: scaleX(-1);
+            -ms-filter: fliph; /*IE*/
+            filter: fliph; /*IE*/
+	    }
+
+    </style>
+        <!-- END: SSO STYLESHEET -->
+
+        <!-- START: BOOKMARK ICONS -->
+        <link rel="icon" href="/Content/assets/img/favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="/Content/assets/img/favicon.ico" />
+        <!-- END: BOOKMARK ICONS -->
+        <!-- END: STYLES -->
+
+       <!-- START: SCRIPTS -->
+        <script src="http://use.typekit.net/yhe4arv.js"></script>
+        <script>try { Typekit.load(); } catch (e) { }</script>
+        <script src="/Scripts/sso/jquery-1.6.2.min.js"></script>
+        <script src="/Scripts/sso/jquery-ui-1.8rc2.custom.min.js"></script>
+        <!-- END: SCRIPTS -->
+
+        <!-- END: SSO STYLESHEET -->
+        <!-- START: SCRIPTS -->
+
+        <!-- START: BOOKMARK ICONS -->
+        <link rel="icon" href="favicon.png" type="image/png" />
+        <link rel="shortcut icon" href="favicon.ico" />
+        <!-- END: BOOKMARK ICONS -->
+        <!-- END: STYLES -->
+
+</head>
+<body>
+      <div id="lightbox">
+         <div class="bg-overlay"></div>
+         <img id="absloader" src="/Content/theme/images/loader.gif" alt="Loading...">
+         <div id="alertbox" class="content">
+             <a href="#" class="btn-close">X</a>
+             <p id="alertmessage">This is your error message.</p>
+         </div>
+     </div>
+
+        
+
+        
+    <!--[if lt IE 8]>
+        <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+        <!-- START: HEADER -->
+        <!-- START: HEADER -->
+        <header class="header fixed" role="banner">
+            <div class="top-row">
+
+                <div>
+
+                    <!-- START: LOGO (HEADER) -->
+                    <div class="logos logo-header">
+
+                        <a class="v-centered" href="/Home">
+                            <img src="/Content/assets/img/logo.png" alt="ABS-CBN">
+                            
+                            <!-- <div class="drop"></div> -->
+                        </a>
+
+                    </div>
+                    <!-- END: LOGO (HEADER) -->
+
+                    <!-- START: UNIVERSAL MENU -->
+                    <div class="universal-menu">
+                        <ul class="logged-in">
+                            <li class="profile">
+                               <span style="float: left!important;padding-right: 10px;"> <img class="icons login" border="0" alt="" src="http://accountsabscbn.blob.core.windows.net/profileimages/unknown.jpg" width="100" height="100" style="height: 50px; padding-top: 10px;">
+                                    </span>
+                                <span class="user-name">Firstname </span>
+
+                                
+                                <div class="account-menu">
+                                    <ul>
+                                        <li><a class="btn-menuacc" href="#acc">Account Details</a></li>
+                                        
+                                        <li><a href="/Home/LogOut" onclick="javascript:document.cookie ='willgo=';myloader(1);">Log Out</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li><a class="icons universal" href="#">Connect</a></li>
+                        </ul>
+
+                    </div>
+                    <!-- END: UNIVERSAL MENU -->
+
+                </div>
+
+            </div>
+
+            <div class="middle-row">
+                <a class="icons icon-menu mobile-icons" href="#"></a>
+                <span class="icon-devider">|</span>
+                <a class="icons icon-search mobile-icons" href="#"></a>
+            </div>
+
+            <div class="bottom-row">
+
+                <div class="align-left">
+
+                    <!-- START: MAIN NAVIGATION -->
+                    <nav class="main-menu" role="navigation">
+
+                        <ul>
+                            
+                            <li><a class="btn-menuacc" href="#acc">Account Details</a></li>
+                            <li><a href="/Home/LogOut" onclick="javascript:document.cookie ='willgo=';myloader(1);">Log Out</a></li>
+                        </ul>
+
+                    </nav>
+                    <!-- END: MAIN NAVIGATION -->
+
+                </div>
+
+            </div>
+        </header>
+        <!-- END: HEADER -->
+
+    <script type="text/javascript" src="/Scripts/sso/HomeJS/Profile.js"></script>
+
+
+
+<input type="hidden" id="oldProfImage" value="unknown.jpg" />
+<!-- START: MAIN -->
+<main class="main sso" role="main">
+           <div class="sso-container black with-center-content">
+                <div class="sso-content center-content">
+                    <div class="form-holder">
+                        <form class="profile-form no-border">
+
+                            <!-- START PROFILE INFORMATION -->
+                            <div class="layer profile-info">
+
+                                <div class="img-profile">
+                                    <img src="http://accountsabscbn.blob.core.windows.net/profileimages/unknown.jpg" style="height: 230px;width: 210px;" />
+                                    <span>
+                                        <label>Change Photo</label>
+                                        <small class="icon-camera"></small>
+                                        <input type="file" title="Choose a file to upload"  accept="image/*" name="profile-photo" id="fileInput" onchange="uploadImage();" />
+                                    </span>
+                                </div>
+                                <div class="static-block" id="name-static">
+                                    <label class="value">Firstname</label>
+                                    <label class="value">Lastname</label>
+                                    <a href="#name-field" class="link-edit" target="#name-field">&nbsp;<span class="icon-pencil"></span> edit</a>
+                                </div>
+
+                                <div class="edit-block" id="name-field">
+                                     <span class="error" id ="message1">
+                                    </span>
+                                    <label class="small">First Name:</label>
+                                    <input type="text" id="txUserFName" placeholder="First Name"  onblur ="CheckNull('txUserFName');" value="Firstname"/>
+                                    <!-- <label class="value">Juan Carlos</label> -->
+                                    
+                                    <label class="small">Last Name:</label>
+                                    <input type="text" id="txUserLName" placeholder="Last Name"  onblur ="CheckNull('txUserLName');" value="Lastname" class="field"/>
+                                    <!-- <label class="value">San Luis</label> -->
+                                    <span>
+                                        <a href="#name-field" data-block="name-static" class="btn-hide cancel">Cancel</a>&nbsp;|&nbsp;<a href="#" class="btn-hide save" onclick="ValidatePersonInfo();">Save</a>
+                                    </span>
+                                </div>
+
+                                <div class="static-block" id="birthday-static">
+                                    <label class="value">Jan 15, 2015</label>
+                                    <a href="#birthday-field" class="link-edit">&nbsp;<span class="icon-pencil"></span> edit</a>
+                                </div>
+
+                                <div class="edit-block" id="birthday-field">
+                                     <span class="error" id ="message7">
+                                    </span>
+                                    <label class="small">Birthday:</label>
+                                    <select id="ddMonth" class="field">
+                                        
+                                                    <option value="1">Jan</option>
+                                                    <option value="2">Feb</option>
+                                                    <option value="3">Mar</option>
+                                                    <option value="4">Apr</option>
+                                                    <option value="5">May</option>
+                                                    <option value="6" selected>Jun</option>
+                                                    <option value="7">Jul</option>
+                                                    <option value="8">Aug</option>
+                                                    <option value="9">Sep</option>
+                                                    <option value="10">Oct</option>
+                                                    <option value="11">Nov</option>
+                                                    <option value="12">Dec</option>
+                                        
+                                    </select>
+                                    <select id="ddDay" class="field">
+                                        
+                                                <option selected>1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                                <option value="11">11</option>
+                                                <option value="12">12</option>
+                                                <option value="13">13</option>
+                                                <option value="14">14</option>
+                                                <option value="15">15</option>
+                                                <option value="16">16</option>
+                                                <option value="17">17</option>
+                                                <option value="18">18</option>
+                                                <option value="19">19</option>
+                                                <option value="20">20</option>
+                                                <option value="21">21</option>
+                                                <option value="22">22</option>
+                                                <option value="23">23</option>
+                                                <option value="24">24</option>
+                                                <option value="25">25</option>
+                                                <option value="26">26</option>
+                                                <option value="27">27</option>
+                                                <option value="28">28</option>
+                                                <option value="29">29</option>
+                                                <option value="30">30</option>
+                                                <option value="31">31</option>
+                                        
+                                    </select>
+                                    <select id="ddYear" class="field">
+                                             <option>1917</option>
+                                             <option>1918</option>
+                                             <option>1919</option>
+                                             <option>1920</option>
+                                             <option>1921</option>
+                                             <option>1922</option>
+                                             <option>1923</option>
+                                             <option>1924</option>
+                                             <option>1925</option>
+                                             <option>1926</option>
+                                             <option>1927</option>
+                                             <option>1928</option>
+                                             <option>1929</option>
+                                             <option>1930</option>
+                                             <option>1931</option>
+                                             <option>1932</option>
+                                             <option>1933</option>
+                                             <option>1934</option>
+                                             <option>1935</option>
+                                             <option>1936</option>
+                                             <option>1937</option>
+                                             <option>1938</option>
+                                             <option>1939</option>
+                                             <option>1940</option>
+                                             <option>1941</option>
+                                             <option>1942</option>
+                                             <option>1943</option>
+                                             <option>1944</option>
+                                             <option>1945</option>
+                                             <option>1946</option>
+                                             <option>1947</option>
+                                             <option>1948</option>
+                                             <option>1949</option>
+                                             <option>1950</option>
+                                             <option>1951</option>
+                                             <option>1952</option>
+                                             <option>1953</option>
+                                             <option>1954</option>
+                                             <option>1955</option>
+                                             <option>1956</option>
+                                             <option>1957</option>
+                                             <option>1958</option>
+                                             <option>1959</option>
+                                             <option>1960</option>
+                                             <option>1961</option>
+                                             <option>1962</option>
+                                             <option>1963</option>
+                                             <option>1964</option>
+                                             <option>1965</option>
+                                             <option>1966</option>
+                                             <option>1967</option>
+                                             <option>1968</option>
+                                             <option>1969</option>
+                                             <option>1970</option>
+                                             <option>1971</option>
+                                             <option>1972</option>
+                                             <option>1973</option>
+                                             <option>1974</option>
+                                             <option>1975</option>
+                                             <option>1976</option>
+                                             <option>1977</option>
+                                             <option>1978</option>
+                                             <option>1979</option>
+                                             <option>1980</option>
+                                             <option>1981</option>
+                                             <option>1982</option>
+                                             <option>1983</option>
+                                             <option>1984</option>
+                                             <option>1985</option>
+                                             <option>1986</option>
+                                             <option>1987</option>
+                                             <option>1988</option>
+                                             <option>1989</option>
+                                             <option>1990</option>
+                                             <option>1991</option>
+                                             <option>1992</option>
+                                             <option>1993</option>
+                                             <option>1994</option>
+                                                <option selected>1995</option>
+                                             <option>1996</option>
+                                             <option>1997</option>
+                                             <option>1998</option>
+                                             <option>1999</option>
+                                             <option>2000</option>
+                                    </select>
+                                    <span>
+                                        <a href="#birthday-field" data-block="birthday-static" class="btn-hide cancel">Cancel</a>&nbsp;|&nbsp;<a href="#birthday-field"  class="btn-hide save" onclick="validateBirth()">Save</a>
+                                    </span>
+                                </div>
+
+                                <div class="static-block" id="gender-static">
+                                    <label class="value">Male</label>
+                                    <a href="#gender-field" class="link-edit">&nbsp;<span class="icon-pencil"></span> edit</a>
+                                </div>
+
+                                <div class="edit-block" id="gender-field">
+                                    <span class="error" id ="message8"></span>
+                                    <label class="small">Gender:</label>
+                                    <select id="ddGender" class="field">
+                                        
+                                            <option value="m" selected>Male</option>
+                                            <option value="f">Female</option>
+                                        
+                                    </select>
+                                    <span>
+                                        <a href="#gender-field" data-block="gender-static" class="btn-hide cancel">Cancel</a>&nbsp;|&nbsp;<a href="#gender-field" class="btn-hide save" onclick="validateGender();">Save</a>
+                                    </span>
+                                </div>
+                            </div>
+                            <!-- END PROFILE INFORMATION -->
+
+                            <!-- START LOGIN DETAILS -->
+                            <div id="log" class="layer login-details">
+                                <h2>Login Details</h2> 
+                                
+                                <div class="static-block" id="email-static">
+                                    <label class="small">Email Address:&nbsp;</label>
+                                    
+                                   
+                                        <label class="value"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="b1d5d4c7d2c2c3dbf1d6dcd0d8dd9fd2dedc">[email&#160;protected]</a></label>        
+                                    
+                                    
+                                   
+                                </div>
+                                <div class="edit-block" id="email-field">
+                                    <span class="error" id ="message3">
+                                    </span>
+                                    <label class="small">Email:</label>
+                                    <input type="email" id="txUserEmail" onblur ="CheckNull('txUserEmail');" placeholder="Email" onkeyup="validateEmail('txUserEmail');" value="firstname.lastname@maildrop.cc" class="field"/>
+                                    
+                                    <span>
+                                        <a href="#email-field" data-block="email-static" class="btn-hide cancel">Cancel</a>&nbsp;|&nbsp;<a href="#email-field"  onclick="ValidateEmailInfo()();" class="btn-hide save">Save</a>
+                                    </span>
+                                </div>
+                                <div class="static-block pswd-block" id="pswd-static">
+                                    <label class="small">Password:&nbsp;</label>
+                                    <a href="#pswd-field" class="link-edit">Change Password</a>
+                                </div>
+
+                                <div class="edit-block" id="pswd-field">
+                                    <span class="error" id ="message4">
+                                    </span>
+                                    <input type="password" id="txUserPass" onblur ="CheckNull('txUserPass');" placeholder="Current Password" onfocus="ClearMsg(7)" class="field"/>
+                                    <input type="password" id="txUserNewPass" onblur ="CheckNull('txUserNewPass');" placeholder="New Password" onfocus="ClearMsg(7)" class="field"/>
+                                    <small>Use at least 8 characters</small>
+                                    <input type="password" id="txConfirmPass" onblur ="CheckNull('txConfirmPass');" placeholder="Confirm Password" onfocus="ClearMsg(7)" class="field"/>
+                                    <span>
+                                        <a href="#pswd-field" data-block="pswd-static" class="btn-hide cancel">Cancel</a>&nbsp;|&nbsp;<a href="#pswd-field" onclick="ValidatePassInfo();"  class="btn-hide save">Save</a>
+                                    </span>
+                                </div> 
+                            </div>
+                            <!-- END LOGIN DETAILS -->
+                            
+                            <!-- START ACCOUNT DETAILS -->
+                            <div id="acc" class="layer acct-details">
+                                <h2>Account Details</h2>
+
+                                
+                               
+                                
+                                   
+                                   
+
+                                            <div class="static-block" id="sky-static">
+                                                <label class="small">SKY:</label>
+                                                <label class="value"><span>&nbsp;9075111372</span></label>
+                                                
+                                                
+                                                <input type="hidden" id="hdSkyAccount" value="9075111372" />
+                                                
+                                                <input type="hidden" id="hdSkyAccountLastName" />
+                                                <a href="#sky-field" class="link-edit">&nbsp;<span class="icon-pencil"></span> Change</a>
+                                                <a href="#light" class="link-edit" style="margin-right: 5%;" onclick="DeleteSkyAccount();">&nbsp;<span class="icon-pencil"></span> Delete</a>
+                                            </div>
+                                            <div class="edit-block" id="sky-field">
+                                                <span class="error" id ="message6">
+                                                </span>
+                                                <div class="mobile-input">
+                                                <input type="text" id="txUserSkyMobile" onfocus="ClearField('txUserSkyMobile');" onblur ="CheckNull('txUserSkyMobile');" placeholder="Sky Account" value="9075111372"/>
+                                                
+                                                </div>
+                                                    <span>
+                                                    <a href="#sky-field" data-block="sky-static" class="btn-hide cancel">Cancel</a>&nbsp;|&nbsp;<a href="#light" onclick="ShowVerifyAccountLastname();" class="btn-hide save">Save</a>
+                                                </span>
+                                            </div>
+
+
+                                            <div class="static-block" id="mobile-two-static">
+                                                <label class="small">ABS-CBN Mobile:</label>
+                                                <label class="value"><span>FREE</span></label>
+                                                <a href="#mobile-two-field" class="link-edit">&nbsp;<span class="icon-pencil"></span> Add</a>
+                                            </div>
+                                            <div class="edit-block" id="mobile-two-field">
+                                                 <span class="error" id ="message5"></span>
+                                                  <div class="mobile-input">
+                                                        <select id="absmobcc" class="country-code field"></select>
+                                                        <input type="text" id="txUserABSMobile" onfocus="ClearField('txUserABSMobile');" onblur ="CheckNull('txUserABSMobile');"  placeholder="Mobile Number" value="" />
+                                                        <input type="hidden" id="hdoldABSMobile" placeholder="Mobile Number"/>
+                                                            <br />
+                                                        <label class="label-sample">Country Code</label>
+                                                  </div>
+                                                  <span>
+                                                        <a href="#mobile-two-field" data-block="mobile-two-static" class="btn-hide cancel">Cancel</a>&nbsp;|&nbsp;<a href="#mobile-two-field"  onclick="ValidateABSMobileInfo();" class="btn-hide save">Save</a>
+                                                  </span> 
+                                            </div>
+                                        
+                                             
+                                             
+                                        
+                                        
+                                        
+                                   
+                              
+
+                               
+                            </div>
+                            <!-- END ACCOUNT DETAILS -->
+
+                            <!-- START UNSUBSCRIBE NEWS LETTER -->
+                           
+                                 
+                               
+                            <!-- END UNSUBSCRIBE NEWS LETTER -->
+
+                            <!-- START LOGGGED IN TO FACEBOOK -->
+                            
+                            <!-- END LOGGGED IN TO FACEBOOK -->
+                            <a href="#delete-account" class="link-delete" style="display : none;">Delete Account</a>
+                            <br /><br />
+                            <span class="error" id ="message-red">
+                               
+                            </span>
+                        </form>
+
+                        
+                        <a href="/Home/LogOut" class="link-delete" onclick="javascript:document.cookie ='willgo=';myloader(1);">LOG OUT</a>
+                    </div>
+                </div>
+            </div>
+
+    
+
+    
+    <div id="light" class="white_content2"><span>Verify SKY account Lastname</span><a href = "javascript:void(0)" onclick = "ClosePopup();"><p class="close">x</p></a>
+         <br /><br />
+                <div class="form-holder">
+                        <div class="sso-content center-content">
+                            <span class="error" style="color:red;" id ="accountMsg"></span>
+                            <br />
+                             <label class="small">Account Lastname :&nbsp;&nbsp;</label> <input type="text" id="txSkyLastName" style="width: 80%;" placeholder="&nbsp;Account Last Name"/>
+                             <input type="button" value="Submit" onclick="ValidateSkyMobileInfo();"/>
+                        </div>
+                </div>
+    </div>
+    
+    <div id="fade" class="black_overlay"></div>
+
+       <!-- LIGHTBOX WRAPPER START -->
+        
+           
+        
+        <!-- LIGHTBOX WRAPPER END -->
+
+<!-- END: MAIN -->
+
+
+        <!-- START: FOOTER -->
+            <footer class="footer" role="contentinfo"></footer>
+        <!-- END: FOOTER -->
+            <div id="ajaxDialog" title="Server Message" style="display:none">		
+                <p>
+                    <table width="100%">
+                        <tr>
+                            <td style="width:5%" valign="top">
+                                <img id="artImg" src='/Content/assets/img/dlg-error.jpeg' alt=""
+                                    style="float: left; margin: 0px 20px 0px 0px; width: 60px; height: auto;">
+                                <img id="infImg" src='/Content/assets/img/Info.png' alt=""
+                                    style="float: left; margin: 0px 20px 0px 0px; width: 60px; height: auto;">
+                                <img id="QtnImg" src='/Content/assets/img/question-mark.png' alt=""
+                                    style="float: left; margin: 0px 20px 0px 0px; width: 60px; height: auto;">
+                                <img id="WrnImg" src='/Content/assets/img/warning.png' alt=""
+                                    style="float: left; margin: 0px 20px 0px 0px; width: 60px; height: auto;">
+                                
+                            </td>
+                            <td style="width:2%">&nbsp;</td>
+                            <td><span id="ajaxMSG"></span></td>                        
+                        </tr>
+                    </table>
+                    <p>
+            </div>    
+        <div id="dialog" style="display:none">
+            <div>
+                <div id="dialog-content">
+                </div>
+            </div>
+        </div>
+<input type="hidden" id="thisRoot"  value="/" />
+    <!-- START: SCRIPTS -->
+        
+
+        <!-- START: THEME SCRIPTS FOR SSO -->
+        
+        <script data-cfasync="false" src="/cdn-cgi/scripts/af2821b0/cloudflare-static/email-decode.min.js"></script><script type="text/javascript" src="/Content/theme/scripts/master.js"></script> 
+        <script type="text/javascript" src="/Content/theme/scripts/close-welcome.js"></script>       
+        <!-- END: THEME SCRIPTS FOR SSO -->
+
+        <!-- START: SCRIPTS (APP) -->
+        <!-- END: SCRIPTS (APP) -->
+    
+        <!-- START: SCRIPTS FOR SSO -->
+        <script src="/Scripts/sso/sso.js"></script>
+        <!-- END: SCRIPTS FOR SSO -->
+
+        <script>
+            (function (f, i, r, e, s, h, l) {
+                i['GoogleAnalyticsObject'] = s;
+                f[s] = f[s] || function () {
+                    (f[s].q = f[s].q || []).push(arguments)
+                }, f[s].l = 1 * new Date();
+                h = i.createElement(r),
+                l = i.getElementsByTagName(r)[0];
+                h.async = 1;
+                h.src = e;
+                l.parentNode.insertBefore(h, l)
+            })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+            ga('create', 'UA-XXXXXXXX-XX');
+            ga('send', 'pageview');
+        </script>
+        <!-- END: SCRIPTS -->
+    <script src="//azuretv2devewu00sca63.blob.core.windows.net/abscbnscripts/universalnav/uninav.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 /**
- * Is Due | API - Your one-stop app for managing online statement of accounts
+ * Is Due | MySky PH - Your one-stop app for managing online statement of accounts
  * Copyright © 2017 Reijhanniel Jearl Campos (devcsrj@apache.org)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -17,13 +17,18 @@
  */
 package com.github.devcsrj.isdue
 
-interface InvoiceApi {
+import org.jsoup.nodes.Document
+import java.util.function.Function
 
-    fun getDues(): List<Invoice>
+internal class ProfileDocumentToSkyAccountId : Function<Document, String> {
 
-    fun getPaid(): List<Invoice> {
-        return getPaid(5)
+    override fun apply(doc: Document): String {
+        val accountElems = doc.select("#acc > div.static-block")
+        val accounts = accountElems
+                .map { Pair(it.child(0).text(), it.child(1).text()) }
+                .map { Pair(it.first.substringBefore(":"), it.second) }
+                .fold(HashMap<String, String>(), { a, i -> a.put(i.first, i.second); a })
+        return accounts["SKY"]!!
     }
 
-    fun getPaid(limit: Int): List<Invoice>
 }
