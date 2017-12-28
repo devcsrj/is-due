@@ -44,6 +44,9 @@ class HtmlConverterFactory : Converter.Factory() {
     override fun responseBodyConverter(type: Type?, annotations: Array<Annotation>?,
                                        retrofit: Retrofit?): Converter<ResponseBody, Document>? {
 
+        if (type != Document::class.java)
+            return null
+
         return Converter {
             it.byteStream().use {
                 Jsoup.parse(it, null, retrofit!!.baseUrl().toString(), parser)

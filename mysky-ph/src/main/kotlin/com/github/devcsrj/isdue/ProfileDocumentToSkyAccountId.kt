@@ -20,6 +20,9 @@ package com.github.devcsrj.isdue
 import org.jsoup.nodes.Document
 import java.util.function.Function
 
+/**
+ * Transforms requests from [AbsCbnSsoHttpApi.login]
+ */
 internal class ProfileDocumentToSkyAccountId : Function<Document, String> {
 
     override fun apply(doc: Document): String {

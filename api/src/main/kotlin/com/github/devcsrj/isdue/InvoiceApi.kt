@@ -19,11 +19,11 @@ package com.github.devcsrj.isdue
 
 interface InvoiceApi {
 
-    fun getDues(): List<Invoice>
+    fun getDueInvoices(): List<Invoice>
 
-    fun getPaid(): List<Invoice> {
-        return getPaid(5)
+    fun getPaidInvoices(): List<Invoice> {
+        return getPaidInvoices(5)
     }
 
-    fun getPaid(limit: Int): List<Invoice>
+    fun getPaidInvoices(limit: Int): List<Invoice>
 }

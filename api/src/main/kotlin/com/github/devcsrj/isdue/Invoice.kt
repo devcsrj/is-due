@@ -18,10 +18,11 @@
 package com.github.devcsrj.isdue
 
 import java.math.BigDecimal
+import java.time.LocalDate
 import java.time.ZonedDateTime
 
 data class Invoice(
         val id: String,
         val amount: BigDecimal,
-        val date: ZonedDateTime
+        val date: LocalDate
 )

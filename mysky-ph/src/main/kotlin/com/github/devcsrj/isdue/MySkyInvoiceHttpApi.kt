@@ -17,11 +17,17 @@
  */
 package com.github.devcsrj.isdue
 
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import okio.BufferedSink
 import org.jsoup.nodes.Document
 import retrofit2.Call
+import retrofit2.http.Body
 import retrofit2.http.GET
 import retrofit2.http.Headers
+import retrofit2.http.POST
 import retrofit2.http.Query
+import java.nio.charset.StandardCharsets
 
 internal interface MySkyInvoiceHttpApi {
 
@@ -29,4 +35,32 @@ internal interface MySkyInvoiceHttpApi {
     @Headers("X-Requested-With: XMLHttpRequest")
     fun getPaymentHistory(@Query("accountnumber") accountNumber: String,
                           @Query("year") year: Int): Call<Document>
+
+    @POST("/myaccounts")
+    @Headers("X-Requested-With: XMLHttpRequest")
+    fun getAccount(@Body body: AccountRequestBody): Call<MySkyAccount>
+
+    class AccountRequestBody(private val accountNumber: String,
+                             private val email: String) : RequestBody() {
+
+        override fun writeTo(sink: BufferedSink?) {
+            sink!!.apply {
+                writeString("""
+                    {
+                        "accountNumbers": {
+                            "SkyCableNumber": "$accountNumber"
+                        },
+                        "emails": [
+                            "$email"
+                        ]
+                    }
+                    """.trimIndent(), StandardCharsets.UTF_8)
+            }
+        }
+
+        override fun contentType(): MediaType? {
+            return MediaType.parse("application/json")
+        }
+
+    }
 }

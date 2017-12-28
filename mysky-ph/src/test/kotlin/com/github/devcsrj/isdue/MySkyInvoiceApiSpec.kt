@@ -23,6 +23,8 @@ import okio.Buffer
 import okio.Okio
 import org.testng.Assert.assertEquals
 import org.testng.annotations.Test
+import java.math.BigDecimal
+import java.time.LocalDate
 import java.util.function.Supplier
 
 @Test
@@ -38,10 +40,6 @@ class MySkyInvoiceApiSpec {
         }
         authServer.enqueue(MockResponse()
                 .setResponseCode(200)
-                .setHeader("Set-Cookie", "s=e707fe2a-e161-4453-8b88-fdd6c838a722; path=/")
-                .setHeader("Set-Cookie", "i=2d87ea3a-c20e-4b54-8182-a2d063ed0489; path=/")
-                .setHeader("Set-Cookie", "u=firstname.lastname@maildrop.cc; path=/")
-                .setHeader("Set-Cookie", "f=Firstname; path=/")
                 .setBody(buffer))
 
         val skyUrl = skyServer.url("/metromanila/")
@@ -53,7 +51,7 @@ class MySkyInvoiceApiSpec {
     }
 
     @Test
-    fun testGetPaidDues() {
+    fun testGetPaidInvoices() {
         val skyServer = MockWebServer()
         val buffer = Buffer()
         javaClass.getResourceAsStream("/mysky-payment-history.html").use {
@@ -70,9 +68,33 @@ class MySkyInvoiceApiSpec {
         val api = MySkyInvoiceApi(skyUrl, authUrl, "firstname.lastname@maildrop.cc", "password")
         api.accountId = Supplier { "9075111372" }
 
-        val actual = api.getPaid()
+        val actual = api.getPaidInvoices()
         assertEquals(actual.size, 2)
 
+    }
+
+    @Test
+    fun testGetDueInvoices() {
+        val skyServer = MockWebServer()
+        val buffer = Buffer()
+        javaClass.getResourceAsStream("/mysky-account.json").use {
+            buffer.writeAll(Okio.source(it))
+        }
+        skyServer.enqueue(MockResponse()
+                .setResponseCode(200)
+                .setBody(buffer))
+        val authServer = MockWebServer()
+
+        val skyUrl = skyServer.url("/metromanila/")
+        val authUrl = authServer.url("/")
+
+        val api = MySkyInvoiceApi(skyUrl, authUrl, "firstname.lastname@maildrop.cc", "password")
+        api.accountId = Supplier { "9075111372" }
+
+        val actual = api.getDueInvoices()
+        assertEquals(actual, listOf(
+                Invoice("124121521", BigDecimal.ZERO, LocalDate.of(2018, 1, 5))
+        ))
     }
 
 }
