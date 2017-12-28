@@ -1,5 +1,8 @@
 # Is Due 
 
+[![Build Status](https://img.shields.io/circleci/project/devcsrj/is-due.svg)]()
+[![License](https://img.shields.io/github/license/devcsrj/is-due.svg)]()
+
 Your one-stop app for managing online statement of accounts of Philippine service providers.
 
 Although service providers in the Philippines have a web portal for accessing statement of accounts (SOA), they're either slow, dated, unreliable, outdated - usually all of the above. The frustrations in navigating using these crappy web portals led me to write this tool to aggregates all of my invoices in one place.
