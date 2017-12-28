@@ -21,14 +21,13 @@ import okhttp3.mockwebserver.MockResponse
 import okhttp3.mockwebserver.MockWebServer
 import okio.Buffer
 import okio.Okio
-import org.testng.Assert.assertEquals
-import org.testng.annotations.Test
+import org.junit.Test
 import java.math.BigDecimal
 import java.time.LocalDate
 import java.util.function.Supplier
+import kotlin.test.assertEquals
 
-@Test
-class MySkyInvoiceApiSpec {
+class MySkyInvoiceApiTest {
 
     @Test
     fun testLoginScrapesAccountId() {
