@@ -1,5 +1,5 @@
 /**
- * Is Due | MySky PH - Your one-stop app for managing online statement of accounts
+ * Is Due | MySky PH - Your one-stop app for managing Philippine service provider invoices
  * Copyright © 2017 Reijhanniel Jearl Campos (devcsrj@apache.org)
  *
  * This program is free software: you can redistribute it and/or modify
