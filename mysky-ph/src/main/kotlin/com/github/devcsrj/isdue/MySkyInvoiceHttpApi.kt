@@ -34,7 +34,7 @@ internal interface MySkyInvoiceHttpApi {
     @GET("/myaccounts/payment-history")
     @Headers("X-Requested-With: XMLHttpRequest")
     fun getPaymentHistory(@Query("accountnumber") accountNumber: String,
-                          @Query("year") year: Int): Call<Document>
+                          @Query("year") year: Int): Call<MySkyInvoices>
 
     @POST("/myaccounts")
     @Headers("X-Requested-With: XMLHttpRequest")

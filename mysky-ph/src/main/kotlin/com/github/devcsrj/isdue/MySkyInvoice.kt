@@ -17,21 +17,25 @@
  */
 package com.github.devcsrj.isdue
 
-import org.jsoup.nodes.Document
-import java.util.function.Function
+import pl.droidsonroids.jspoon.annotation.Selector
+import java.util.Date
 
-/**
- * Transforms requests from [AbsCbnSsoHttpApi.login]
- */
-internal class ProfileDocumentToSkyAccountId : Function<Document, String> {
+internal class MySkyInvoices {
 
-    override fun apply(doc: Document): String {
-        val accountElems = doc.select("#acc > div.static-block")
-        val accounts = accountElems
-                .map { Pair(it.child(0).text(), it.child(1).text()) }
-                .map { Pair(it.first.substringBefore(":"), it.second) }
-                .fold(HashMap<String, String>(), { a, i -> a.put(i.first, i.second); a })
-        return accounts["SKY"]!!
-    }
+    @Selector("tbody > tr")
+    lateinit var items: List<MySkyInvoice>
+}
 
+internal class MySkyInvoice {
+
+    @Selector("td:nth-child(4)")
+    lateinit var id: String
+
+    @Selector("td:nth-child(1)", format = "MMM dd, yyyy")
+    lateinit var date: Date
+
+    @Selector("td:nth-child(2)")
+    lateinit var amount: String
+
+    constructor()
 }

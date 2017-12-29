@@ -49,7 +49,6 @@
 
     <modules>
         <module>api</module>
-        <module>api-tools</module>
         <module>mysky-ph</module>
     </modules>
 
@@ -103,6 +102,11 @@
                 <groupId>com.squareup.retrofit2</groupId>
                 <artifactId>converter-jackson</artifactId>
                 <version>${retrofit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.github.devcsrj</groupId>
+                <artifactId>jspoon</artifactId>
+                <version>master-SNAPSHOT</version>
             </dependency>
 
             <dependency>
@@ -219,4 +223,11 @@
             </plugin>
         </plugins>
     </build>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 </project>

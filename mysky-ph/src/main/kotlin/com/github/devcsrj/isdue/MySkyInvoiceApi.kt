@@ -23,21 +23,25 @@ import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.deser.std.StdDeserializer
 import com.fasterxml.jackson.databind.module.SimpleModule
-import com.github.devcsrj.retrofit2.HtmlConverterFactory
 import com.google.common.annotations.VisibleForTesting
 import com.google.common.base.Suppliers
 import devcsrj.okhttp3.logging.HttpLoggingInterceptor
 import okhttp3.HttpUrl
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
+import pl.droidsonroids.retrofit2.JspoonConverterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
 import java.math.BigDecimal
 import java.net.CookieManager
+import java.text.DecimalFormat
+import java.text.NumberFormat
 import java.time.LocalDate
 import java.time.Year
+import java.time.ZoneId
 import java.time.ZoneOffset
 import java.time.format.DateTimeFormatter
+import java.util.Locale
 import java.util.function.Supplier
 
 class MySkyInvoiceApi : InvoiceApi {
@@ -48,7 +52,7 @@ class MySkyInvoiceApi : InvoiceApi {
     private val password: String
 
     @VisibleForTesting
-    internal var accountId: Supplier<String>
+    internal var profile: Supplier<AbsCbnProfile>
 
     constructor(url: HttpUrl, authUrl: HttpUrl, username: String, password: String) {
         val cookieManager = CookieManager()
@@ -57,18 +61,17 @@ class MySkyInvoiceApi : InvoiceApi {
                 .addInterceptor(HttpLoggingInterceptor())
                 .build()
 
-        this.accountId = Suppliers.memoize(Supplier {
+        this.profile = Suppliers.memoize(Supplier {
             val api = Retrofit.Builder()
                     .baseUrl(authUrl)
-                    .addConverterFactory(HtmlConverterFactory.create())
+                    .addConverterFactory(JspoonConverterFactory.create())
                     .client(httpClient)
                     .validateEagerly(true)
                     .build()
                     .create(AbsCbnSsoHttpApi::class.java)
 
             val call = api.login(AbsCbnSsoHttpApi.LoginBody(username, password))
-            val response = call.execute()
-            ProfileDocumentToSkyAccountId().apply(response.body()!!)
+            call.execute().body()
         }::get)
 
         this.username = username
@@ -80,7 +83,7 @@ class MySkyInvoiceApi : InvoiceApi {
         mapper.registerModule(module)
         this.invoiceApi = Retrofit.Builder()
                 .baseUrl(url)
-                .addConverterFactory(HtmlConverterFactory.create())
+                .addConverterFactory(JspoonConverterFactory.create())
                 .addConverterFactory(JacksonConverterFactory.create(mapper))
                 .client(httpClient)
                 .validateEagerly(true)
@@ -89,7 +92,8 @@ class MySkyInvoiceApi : InvoiceApi {
     }
 
     override fun getDueInvoices(): List<Invoice> {
-        val call = invoiceApi.getAccount(MySkyInvoiceHttpApi.AccountRequestBody(accountId.get(), username))
+        val call = invoiceApi.getAccount(MySkyInvoiceHttpApi.AccountRequestBody(
+                profile.get().skyAccountId, username))
         val body = call.execute().body() ?: return emptyList()
         return listOf(
                 Invoice(body.id, body.amountDue, body.dueDate)
@@ -98,8 +102,18 @@ class MySkyInvoiceApi : InvoiceApi {
 
     override fun getPaidInvoices(limit: Int): List<Invoice> {
         val currentYear = Year.now(ZoneOffset.ofHours(+8)).value // +8 = Philippines
-        val response = invoiceApi.getPaymentHistory(accountId.get(), currentYear).execute()
-        return PaymentHistoryDocumentToInvoices().apply(response.body()!!)
+        val result = invoiceApi
+                .getPaymentHistory(profile.get().skyAccountId, currentYear)
+                .execute()
+                .body() ?: return emptyList()
+
+        val format = DecimalFormat("0,000.00")
+        format.isParseBigDecimal = true
+        return result.items.map {
+            val amount = format.parse(it.amount.substringAfter("P ")) as BigDecimal
+            val date = it.date.toInstant().atZone(ZoneId.systemDefault()).toLocalDate()
+            Invoice(it.id, amount, date)
+        }
     }
 
 }

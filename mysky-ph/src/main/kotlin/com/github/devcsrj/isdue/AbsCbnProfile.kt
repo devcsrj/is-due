@@ -17,33 +17,22 @@
  */
 package com.github.devcsrj.isdue
 
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import okio.BufferedSink
-import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.POST
-import java.nio.charset.StandardCharsets
+import pl.droidsonroids.jspoon.annotation.Selector
+import java.util.Date
 
-internal interface AbsCbnSsoHttpApi {
+internal class AbsCbnProfile {
 
-    @POST("/Home/AuthenticateUser")
-    fun login(@Body body: LoginBody): Call<AbsCbnProfile>
+    @Selector("#name-static > label.value:nth-child(1)")
+    lateinit var firstName: String
 
-    class LoginBody(private val username: String,
-                    private val password: String) : RequestBody() {
+    @Selector("#name-static > label.value:nth-child(2)")
+    lateinit var lastName: String
 
-        override fun writeTo(sink: BufferedSink?) {
-            sink!!.apply {
-                writeString("""
-                    {"un":"$username","ps":"$password","dp":false,"ssoappid":""}
-                    """.trimIndent(), StandardCharsets.UTF_8)
-            }
-        }
+    @Selector("#birthday-static > label.value", format = "MMM dd, yyyy")
+    lateinit var birthDate: Date
 
-        override fun contentType(): MediaType? {
-            return MediaType.parse("application/json")
-        }
+    @Selector("#hdSkyAccount", attr = "value")
+    lateinit var skyAccountId: String
 
-    }
+
 }

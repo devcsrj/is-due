@@ -45,8 +45,8 @@ class MySkyInvoiceApiTest {
         val authUrl = authServer.url("/")
 
         val api = MySkyInvoiceApi(skyUrl, authUrl, "firstname.lastname@maildrop.cc", "password")
-        val accountId = api.accountId.get()
-        assertEquals("9075111372", accountId)
+        val profile = api.profile.get()
+        assertEquals("9075111372", profile.skyAccountId)
     }
 
     @Test
@@ -65,7 +65,11 @@ class MySkyInvoiceApiTest {
         val authUrl = authServer.url("/")
 
         val api = MySkyInvoiceApi(skyUrl, authUrl, "firstname.lastname@maildrop.cc", "password")
-        api.accountId = Supplier { "9075111372" }
+        api.profile = Supplier {
+            val profile = AbsCbnProfile()
+            profile.skyAccountId = "9075111372"
+            profile
+        }
 
         val actual = api.getPaidInvoices()
         assertEquals(actual.size, 2)
@@ -88,7 +92,11 @@ class MySkyInvoiceApiTest {
         val authUrl = authServer.url("/")
 
         val api = MySkyInvoiceApi(skyUrl, authUrl, "firstname.lastname@maildrop.cc", "password")
-        api.accountId = Supplier { "9075111372" }
+        api.profile = Supplier {
+            val profile = AbsCbnProfile()
+            profile.skyAccountId = "9075111372"
+            profile
+        }
 
         val actual = api.getDueInvoices()
         assertEquals(actual, listOf(
