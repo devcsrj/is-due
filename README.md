@@ -33,3 +33,9 @@ The current project supports fetching data from:
 ### Internet Service Provider
 
 - [MySky](http://www.mysky.com.ph/)
+
+## Contributing
+
+I have no account for every biller there is. As expected, these companies don't expose public APIs  for app consumption, so the development pace is hindered by the availability of (personal) accounts. If you're subscribe to your own, feel free to submit pull requests! 
+
+(Or give me an access, if you don't mind me seeing your invoices. *wink*)
