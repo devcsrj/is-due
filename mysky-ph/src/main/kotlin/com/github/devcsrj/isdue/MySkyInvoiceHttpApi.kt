@@ -20,7 +20,6 @@ package com.github.devcsrj.isdue
 import okhttp3.MediaType
 import okhttp3.RequestBody
 import okio.BufferedSink
-import org.jsoup.nodes.Document
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET

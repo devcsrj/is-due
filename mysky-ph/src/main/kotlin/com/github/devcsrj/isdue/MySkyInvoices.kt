@@ -18,18 +18,9 @@
 package com.github.devcsrj.isdue
 
 import pl.droidsonroids.jspoon.annotation.Selector
-import java.util.Date
 
-internal class MySkyInvoice {
+internal class MySkyInvoices {
 
-    @Selector("td:nth-child(4)")
-    lateinit var id: String
-
-    @Selector("td:nth-child(1)", format = "MMM dd, yyyy")
-    lateinit var date: Date
-
-    @Selector("td:nth-child(2)")
-    lateinit var amount: String
-
-    constructor()
+    @Selector("tbody > tr")
+    lateinit var items: List<MySkyInvoice>
 }

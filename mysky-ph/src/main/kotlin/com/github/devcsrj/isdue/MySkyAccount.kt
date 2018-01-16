@@ -17,19 +17,9 @@
  */
 package com.github.devcsrj.isdue
 
-import pl.droidsonroids.jspoon.annotation.Selector
-import java.util.Date
+import java.math.BigDecimal
+import java.time.LocalDate
 
-internal class MySkyInvoice {
-
-    @Selector("td:nth-child(4)")
-    lateinit var id: String
-
-    @Selector("td:nth-child(1)", format = "MMM dd, yyyy")
-    lateinit var date: Date
-
-    @Selector("td:nth-child(2)")
-    lateinit var amount: String
-
-    constructor()
-}
+internal data class MySkyAccount(val id: String,
+                                 val dueDate: LocalDate,
+                                 val amountDue: BigDecimal)

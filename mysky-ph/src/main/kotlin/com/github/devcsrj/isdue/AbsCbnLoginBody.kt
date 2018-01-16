@@ -17,19 +17,24 @@
  */
 package com.github.devcsrj.isdue
 
-import pl.droidsonroids.jspoon.annotation.Selector
-import java.util.Date
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import okio.BufferedSink
+import java.nio.charset.StandardCharsets
 
-internal class MySkyInvoice {
+internal class AbsCbnLoginBody(private val username: String,
+                               private val password: String) : RequestBody() {
 
-    @Selector("td:nth-child(4)")
-    lateinit var id: String
+    override fun writeTo(sink: BufferedSink?) {
+        sink!!.apply {
+            writeString("""
+                {"un":"$username","ps":"$password","dp":false,"ssoappid":""}
+                """.trimIndent(), StandardCharsets.UTF_8)
+        }
+    }
 
-    @Selector("td:nth-child(1)", format = "MMM dd, yyyy")
-    lateinit var date: Date
+    override fun contentType(): MediaType? {
+        return MediaType.parse("application/json")
+    }
 
-    @Selector("td:nth-child(2)")
-    lateinit var amount: String
-
-    constructor()
 }

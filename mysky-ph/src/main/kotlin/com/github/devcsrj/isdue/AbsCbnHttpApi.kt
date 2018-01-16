@@ -17,33 +17,13 @@
  */
 package com.github.devcsrj.isdue
 
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import okio.BufferedSink
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.POST
-import java.nio.charset.StandardCharsets
 
-internal interface AbsCbnSsoHttpApi {
+internal interface AbsCbnHttpApi {
 
     @POST("/Home/AuthenticateUser")
-    fun login(@Body body: LoginBody): Call<AbsCbnProfile>
+    fun login(@Body body: AbsCbnLoginBody): Call<AbsCbnProfile>
 
-    class LoginBody(private val username: String,
-                    private val password: String) : RequestBody() {
-
-        override fun writeTo(sink: BufferedSink?) {
-            sink!!.apply {
-                writeString("""
-                    {"un":"$username","ps":"$password","dp":false,"ssoappid":""}
-                    """.trimIndent(), StandardCharsets.UTF_8)
-            }
-        }
-
-        override fun contentType(): MediaType? {
-            return MediaType.parse("application/json")
-        }
-
-    }
 }
