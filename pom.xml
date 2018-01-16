@@ -104,9 +104,9 @@
                 <version>${retrofit.version}</version>
             </dependency>
             <dependency>
-                <groupId>com.github.devcsrj</groupId>
-                <artifactId>jspoon</artifactId>
-                <version>master-SNAPSHOT</version>
+                <groupId>pl.droidsonroids.retrofit2</groupId>
+                <artifactId>converter-jspoon</artifactId>
+                <version>1.1.0</version>
             </dependency>
 
             <dependency>
@@ -223,11 +223,4 @@
             </plugin>
         </plugins>
     </build>
-
-    <repositories>
-        <repository>
-            <id>jitpack.io</id>
-            <url>https://jitpack.io</url>
-        </repository>
-    </repositories>
 </project>

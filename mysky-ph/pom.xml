@@ -40,8 +40,9 @@
             <artifactId>is-due-api</artifactId>
         </dependency>
         <dependency>
-            <groupId>com.github.devcsrj</groupId>
-            <artifactId>jspoon</artifactId>
+            <groupId>pl.droidsonroids.retrofit2</groupId>
+            <artifactId>converter-jspoon</artifactId>
+            <version>1.1.0</version>
         </dependency>
         <dependency>
             <groupId>com.squareup.retrofit2</groupId>
