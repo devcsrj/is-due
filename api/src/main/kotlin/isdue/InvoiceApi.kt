@@ -1,5 +1,5 @@
 /**
- * Is Due | MySky PH - Your one-stop app for managing Philippine service provider invoices
+ * Is Due | API - Your one-stop app for managing Philippine service provider invoices
  * Copyright © 2017 Reijhanniel Jearl Campos (devcsrj@apache.org)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -15,26 +15,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.devcsrj.isdue
+package isdue
 
-import okhttp3.MediaType
-import okhttp3.RequestBody
-import okio.BufferedSink
-import java.nio.charset.StandardCharsets
+interface InvoiceApi {
 
-internal class AbsCbnLoginBody(private val username: String,
-                               private val password: String) : RequestBody() {
+    fun getDueInvoices(): List<Invoice>
 
-    override fun writeTo(sink: BufferedSink?) {
-        sink!!.apply {
-            writeString("""
-                {"un":"$username","ps":"$password","dp":false,"ssoappid":""}
-                """.trimIndent(), StandardCharsets.UTF_8)
-        }
+    fun getPaidInvoices(): List<Invoice> {
+        return getPaidInvoices(5)
     }
 
-    override fun contentType(): MediaType? {
-        return MediaType.parse("application/json")
-    }
-
+    fun getPaidInvoices(limit: Int): List<Invoice>
 }

@@ -15,12 +15,21 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.devcsrj.isdue
+package isdue.mysky
 
 import pl.droidsonroids.jspoon.annotation.Selector
+import java.util.Date
 
-internal class MySkyInvoices {
+internal class MySkyInvoice {
 
-    @Selector("tbody > tr")
-    lateinit var items: List<MySkyInvoice>
+    @Selector("td:nth-child(4)")
+    lateinit var id: String
+
+    @Selector("td:nth-child(1)", format = "MMM dd, yyyy")
+    lateinit var date: Date
+
+    @Selector("td:nth-child(2)")
+    lateinit var amount: String
+
+    constructor()
 }

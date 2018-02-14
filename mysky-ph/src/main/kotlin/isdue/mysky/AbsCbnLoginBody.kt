@@ -15,15 +15,26 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.devcsrj.isdue
+package isdue.mysky
 
-import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.POST
+import okhttp3.MediaType
+import okhttp3.RequestBody
+import okio.BufferedSink
+import java.nio.charset.StandardCharsets
 
-internal interface AbsCbnHttpApi {
+internal class AbsCbnLoginBody(private val username: String,
+                               private val password: String) : RequestBody() {
 
-    @POST("/Home/AuthenticateUser")
-    fun login(@Body body: AbsCbnLoginBody): Call<AbsCbnProfile>
+    override fun writeTo(sink: BufferedSink?) {
+        sink!!.apply {
+            writeString("""
+                {"un":"$username","ps":"$password","dp":false,"ssoappid":""}
+                """.trimIndent(), StandardCharsets.UTF_8)
+        }
+    }
+
+    override fun contentType(): MediaType? {
+        return MediaType.parse("application/json")
+    }
 
 }

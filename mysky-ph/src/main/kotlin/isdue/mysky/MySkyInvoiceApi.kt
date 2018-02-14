@@ -15,10 +15,12 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.devcsrj.isdue
+package isdue.mysky
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.module.SimpleModule
+import isdue.Invoice
+import isdue.InvoiceApi
 import com.google.common.annotations.VisibleForTesting
 import com.google.common.base.Suppliers
 import devcsrj.okhttp3.logging.HttpLoggingInterceptor

@@ -1,5 +1,5 @@
 /**
- * Is Due | API - Your one-stop app for managing Philippine service provider invoices
+ * Is Due | MySky PH - Your one-stop app for managing Philippine service provider invoices
  * Copyright © 2017 Reijhanniel Jearl Campos (devcsrj@apache.org)
  *
  * This program is free software: you can redistribute it and/or modify
@@ -15,14 +15,15 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <http://www.gnu.org/licenses/>.
  */
-package com.github.devcsrj.isdue
+package isdue.mysky
 
-import java.math.BigDecimal
-import java.time.LocalDate
-import java.time.ZonedDateTime
+import retrofit2.Call
+import retrofit2.http.Body
+import retrofit2.http.POST
 
-data class Invoice(
-        val id: String,
-        val amount: BigDecimal,
-        val date: LocalDate
-)
+internal interface AbsCbnHttpApi {
+
+    @POST("/Home/AuthenticateUser")
+    fun login(@Body body: AbsCbnLoginBody): Call<AbsCbnProfile>
+
+}
