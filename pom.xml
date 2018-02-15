@@ -50,6 +50,7 @@
     <modules>
         <module>api</module>
         <module>mysky-ph</module>
+        <module>cli</module>
     </modules>
 
     <properties>
@@ -117,16 +118,6 @@
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-api</artifactId>
             <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-log4j12</artifactId>
-            <version>${slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>log4j</groupId>
-            <artifactId>log4j</artifactId>
-            <version>1.2.17</version>
         </dependency>
 
         <dependency>
@@ -201,7 +192,8 @@
                         <exclude>${project.build.directory}/</exclude>
                         <exclude>**/frontend/</exclude>
                         <exclude>**/.tmp/</exclude>
-                        <exclude>**/test/resources/**/*.html</exclude>
+                        <exclude>**/main/resources/**/**</exclude>
+                        <exclude>**/test/resources/**/**</exclude>
                     </excludes>
                     <mapping>
                         <kt>JAVADOC_STYLE</kt>

@@ -64,7 +64,15 @@ class MySkyInvoiceApi(private val baseUrl: HttpUrl,
                     .create(AbsCbnHttpApi::class.java)
 
             val call = api.login(AbsCbnLoginBody(username, password))
-            call.execute().body()!!
+            val response = try {
+                call.execute()
+            } catch (e: Exception) {
+                var rootCause = e as Throwable
+                while (rootCause.cause != null)
+                    rootCause = rootCause.cause as Throwable
+                throw rootCause
+            }
+            response.body()!!
         }.memoize()
 
         val mapper = ObjectMapper()
