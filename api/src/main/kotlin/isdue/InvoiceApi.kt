@@ -26,4 +26,6 @@ interface InvoiceApi {
     }
 
     fun getPaidInvoices(limit: Int): List<Invoice>
+
+    fun getProviderName(): String
 }

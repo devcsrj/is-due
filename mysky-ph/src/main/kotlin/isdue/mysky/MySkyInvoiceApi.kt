@@ -19,11 +19,10 @@ package isdue.mysky
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.fasterxml.jackson.databind.module.SimpleModule
+import devcsrj.okhttp3.logging.HttpLoggingInterceptor
 import isdue.Invoice
 import isdue.InvoiceApi
-import com.google.common.annotations.VisibleForTesting
-import com.google.common.base.Suppliers
-import devcsrj.okhttp3.logging.HttpLoggingInterceptor
+import isdue.memoize
 import okhttp3.HttpUrl
 import okhttp3.JavaNetCookieJar
 import okhttp3.OkHttpClient
@@ -38,24 +37,24 @@ import java.time.ZoneId
 import java.time.ZoneOffset
 import java.util.function.Supplier
 
-class MySkyInvoiceApi : InvoiceApi {
+class MySkyInvoiceApi(private val baseUrl: HttpUrl,
+                      private val authUrl: HttpUrl,
+                      private val username: String,
+                      private val password: String) : InvoiceApi {
 
     private val httpClient: OkHttpClient
     private val invoiceApi: MySkyInvoiceHttpApi
-    private val username: String
-    private val password: String
 
-    @VisibleForTesting
     internal var profile: Supplier<AbsCbnProfile>
 
-    constructor(url: HttpUrl, authUrl: HttpUrl, username: String, password: String) {
+    init {
         val cookieManager = CookieManager()
         this.httpClient = OkHttpClient.Builder()
                 .cookieJar(JavaNetCookieJar(cookieManager))
                 .addInterceptor(HttpLoggingInterceptor())
                 .build()
 
-        this.profile = Suppliers.memoize(Supplier {
+        this.profile = Supplier {
             val api = Retrofit.Builder()
                     .baseUrl(authUrl)
                     .addConverterFactory(JspoonConverterFactory.create())
@@ -65,18 +64,15 @@ class MySkyInvoiceApi : InvoiceApi {
                     .create(AbsCbnHttpApi::class.java)
 
             val call = api.login(AbsCbnLoginBody(username, password))
-            call.execute().body()
-        }::get)
-
-        this.username = username
-        this.password = password
+            call.execute().body()!!
+        }.memoize()
 
         val mapper = ObjectMapper()
         val module = SimpleModule()
         module.addDeserializer(MySkyAccount::class.java, MySkyAccountDeserializer())
         mapper.registerModule(module)
         this.invoiceApi = Retrofit.Builder()
-                .baseUrl(url)
+                .baseUrl(baseUrl)
                 .addConverterFactory(JspoonConverterFactory.create())
                 .addConverterFactory(JacksonConverterFactory.create(mapper))
                 .client(httpClient)
@@ -84,6 +80,8 @@ class MySkyInvoiceApi : InvoiceApi {
                 .build()
                 .create(MySkyInvoiceHttpApi::class.java)
     }
+
+    override fun getProviderName() = "mysky-ph"
 
     override fun getDueInvoices(): List<Invoice> {
         val call = invoiceApi.getAccount(MySkyInvoiceHttpApi.AccountRequestBody(

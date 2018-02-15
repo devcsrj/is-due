@@ -72,11 +72,6 @@
                 <artifactId>is-due-api</artifactId>
                 <version>${project.version}</version>
             </dependency>
-            <dependency>
-                <groupId>com.google.guava</groupId>
-                <artifactId>guava</artifactId>
-                <version>23.0</version>
-            </dependency>
 
             <dependency>
                 <groupId>com.squareup.okhttp3</groupId>
