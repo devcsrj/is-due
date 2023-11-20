@@ -56,9 +56,7 @@ class ConvergeEmailInvoiceProvider implements InvoiceProvider {
 
       for (var email : emails) {
         var invoice = readInvoice(email);
-        if (invoice.isPresent()) {
-          invoices.add(invoice.get());
-        }
+        invoice.ifPresent(invoices::add);
       }
     }
 
