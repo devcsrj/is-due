@@ -1,0 +1,8 @@
+is-due:
+  source:
+    email:
+      host: imap.gmail.com
+      port: 993
+      username: devcsrj
+      password: "https://myaccount.google.com/apppasswords"
+      ssl: true

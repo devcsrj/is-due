@@ -24,6 +24,11 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.jodd:jodd-mail:7.0.1'
+    implementation 'org.eclipse.angus:angus-mail:2.0.2'
+    implementation 'org.joda:joda-money:1.0.4'
+
+
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
