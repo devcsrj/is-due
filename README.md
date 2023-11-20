@@ -1,7 +1,8 @@
 # Is Due
 
-[![Build Status](https://img.shields.io/circleci/project/devcsrj/is-due.svg)]()
-[![License](https://img.shields.io/github/license/devcsrj/is-due.svg)]()
+[![Java CI](https://github.com/devcsrj/is-due/actions/workflows/gradle.yml/badge.svg)](https://github.com/devcsrj/is-due/actions/workflows/gradle.yml)
+![GitHub License](https://img.shields.io/github/license/devcsrj/is-due)
+
 
 Your one-stop app for managing Philippine service provider invoices.
 
