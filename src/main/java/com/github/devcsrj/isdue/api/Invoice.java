@@ -7,7 +7,10 @@ import java.util.List;
 
 public record Invoice(
         String id,
-        ZonedDateTime date,
+        Biller biller,
+        String accountNumber,
+        ZonedDateTime issuedAt,
+        ZonedDateTime dueAt,
         Money total,
         List<Item> items) {
 

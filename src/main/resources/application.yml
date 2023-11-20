@@ -6,3 +6,6 @@ is-due:
       username: devcsrj
       password: "https://myaccount.google.com/apppasswords"
       ssl: true
+logging:
+  level:
+    com.github.devcsrj: DEBUG
