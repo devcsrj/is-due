@@ -5,5 +5,5 @@ import java.util.List;
 
 public interface InvoiceProvider {
 
-    List<Invoice> getByDate(ZonedDateTime start, ZonedDateTime end);
+  List<Invoice> getByDate(ZonedDateTime start, ZonedDateTime end);
 }

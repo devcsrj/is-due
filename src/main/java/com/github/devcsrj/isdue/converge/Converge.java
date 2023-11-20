@@ -5,13 +5,13 @@ import com.github.devcsrj.isdue.api.InvoiceProvider;
 import jodd.mail.ImapServer;
 
 public class Converge {
-    static final Biller BILLER = new Biller("converge", "Converge ICT Solutions Inc.");
+  static final Biller BILLER = new Biller("converge", "Converge ICT Solutions Inc.");
 
-    private Converge() {
-        throw new AssertionError();
-    }
+  private Converge() {
+    throw new AssertionError();
+  }
 
-    public static InvoiceProvider from(ImapServer mailServer) {
-        return new ConvergeEmailInvoiceProvider(mailServer);
-    }
+  public static InvoiceProvider from(ImapServer mailServer) {
+    return new ConvergeEmailInvoiceProvider(mailServer);
+  }
 }

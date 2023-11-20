@@ -8,9 +8,8 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class Provider {
-    @Bean
-    InvoiceProvider convergeInvoiceProvider(ImapServer mailServer) {
-        return Converge.from(mailServer);
-
-    }
+  @Bean
+  InvoiceProvider convergeInvoiceProvider(ImapServer mailServer) {
+    return Converge.from(mailServer);
+  }
 }
