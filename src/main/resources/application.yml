@@ -6,6 +6,9 @@ is-due:
       username: devcsrj
       password: "https://myaccount.google.com/apppasswords"
       ssl: true
+  provider:
+    security-bank:
+      dob: 1995-06-01 # YYYY-MM-DD
 logging:
   level:
     com.github.devcsrj: DEBUG

@@ -19,6 +19,7 @@ configurations {
     compileOnly {
         extendsFrom annotationProcessor
     }
+    all*.exclude group: 'commons-logging', module: 'commons-logging'
 }
 
 repositories {
@@ -31,7 +32,7 @@ dependencies {
     implementation 'org.eclipse.angus:angus-mail:2.0.2'
     implementation 'org.joda:joda-money:1.0.4'
     implementation 'org.jsoup:jsoup:1.16.2'
-
+    implementation 'org.apache.pdfbox:pdfbox:3.0.0'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
