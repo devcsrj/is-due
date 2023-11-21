@@ -80,7 +80,7 @@ class SecurityBankEmailInvoiceProvider implements InvoiceProvider {
     }
 
     for (var attachment : attachments) {
-      var name = attachment.getName();
+      var name = attachment.getName().toLowerCase();
       if (!name.endsWith(".pdf")) {
         LOG.warn("Ignoring unsupported attachment {} on '{}'", name, email.messageId());
         continue;
