@@ -1,4 +1,6 @@
 is-due:
+  since: 2023-06-01 # YYYY-MM-DD
+  zone: Asia/Manila
   source:
     email:
       host: imap.gmail.com
@@ -12,3 +14,13 @@ is-due:
 logging:
   level:
     com.github.devcsrj: DEBUG
+spring:
+  batch:
+    jdbc:
+      initialize-schema: always
+      platform: sqlite
+  datasource:
+    url: 'jdbc:sqlite:isdue.db'
+  sql:
+    init:
+      mode: always

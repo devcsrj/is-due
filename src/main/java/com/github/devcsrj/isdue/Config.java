@@ -1,10 +1,11 @@
 package com.github.devcsrj.isdue;
 
 import java.time.LocalDate;
+import java.time.ZoneId;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
 @ConfigurationProperties("is-due")
-public record Config(Source source, Provider provider) {
+public record Config(LocalDate since, ZoneId zone, Source source, Provider provider) {
 
   public record Source(Email email) {}
 

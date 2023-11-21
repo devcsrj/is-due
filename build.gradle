@@ -28,11 +28,14 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
+    implementation 'org.springframework.boot:spring-boot-starter-batch'
+    implementation 'com.google.guava:guava:32.1.3-jre'
     implementation 'org.jodd:jodd-mail:7.0.1'
     implementation 'org.eclipse.angus:angus-mail:2.0.2'
     implementation 'org.joda:joda-money:1.0.4'
     implementation 'org.jsoup:jsoup:1.16.2'
     implementation 'org.apache.pdfbox:pdfbox:3.0.0'
+    runtimeOnly 'org.xerial:sqlite-jdbc:3.44.0.0'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
