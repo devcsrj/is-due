@@ -45,20 +45,22 @@ class ConvergeEmailInvoiceProvider implements InvoiceProvider {
   @Override
   public List<Invoice> getByDate(ZonedDateTime start, ZonedDateTime end) {
     var filter = Filters.sender().and(Filters.between(start, end));
-    LOG.debug("Fetching emails between {} and {}", start, end);
+    LOG.debug("Fetching Converge emails between {} and {}", start, end);
 
     var invoices = new LinkedList<Invoice>();
     try (ReceiveMailSession session = this.mailServer.createSession()) {
       session.open();
 
       var emails = session.receiveEmail(filter);
-      LOG.debug("Found {} email(s)", emails.length);
+      LOG.debug("Found {} Converge email(s)", emails.length);
 
       for (var email : emails) {
         var invoice = readInvoice(email);
         invoice.ifPresent(invoices::add);
       }
     }
+
+    LOG.debug("Found {} Converge invoice(s)", invoices.size());
 
     return invoices;
   }

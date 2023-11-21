@@ -52,20 +52,22 @@ class SecurityBankEmailInvoiceProvider implements InvoiceProvider {
   @Override
   public List<Invoice> getByDate(ZonedDateTime start, ZonedDateTime end) {
     var filter = Filters.sender().and(Filters.between(start, end));
-    LOG.debug("Fetching emails between {} and {}", start, end);
+    LOG.debug("Fetching SecurityBank emails between {} and {}", start, end);
 
     var invoices = new LinkedList<Invoice>();
     try (var session = this.mailServer.createSession()) {
       session.open();
 
       var emails = session.receiveEmail(filter);
-      LOG.debug("Found {} email(s)", emails.length);
+      LOG.debug("Found {} SecurityBank email(s)", emails.length);
 
       for (var email : emails) {
         var invoice = readInvoice(email);
         invoice.ifPresent(invoices::add);
       }
     }
+
+    LOG.debug("Found {} SecurityBank invoice(s)", invoices.size());
 
     return invoices;
   }
