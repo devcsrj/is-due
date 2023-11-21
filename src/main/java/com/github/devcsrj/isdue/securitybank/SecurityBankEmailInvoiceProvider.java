@@ -180,9 +180,15 @@ class SecurityBankEmailInvoiceProvider implements InvoiceProvider {
     /**
      * Parses the raw text into a {@link SummaryBlock}.
      *
-     * <p>``` CREDIT CARD ACCOUNT NUMBER xxxx-xxxx-xxxx-xxxx CUT-OFF STATEMENT DATE 24 OCT 2023
-     * PAYMENT DUE DATE 14 NOV 2023 CREDIT LIMIT PHP 400,000.00 TOTAL AMOUNT DUE PHP 549.00 MINIMUM
-     * AMOUNT DUE PHP 500.00 ```
+     * <pre>{@code
+     *  CREDIT CARD ACCOUNT NUMBER
+     *  xxxx-xxxx-xxxx-xxxx
+     *  CUT-OFF STATEMENT DATE 24 OCT 2023
+     *  PAYMENT DUE DATE 14 NOV 2023
+     *  CREDIT LIMIT PHP 400,000.00
+     *  TOTAL AMOUNT DUE PHP 549.00
+     *  MINIMUM AMOUNT DUE PHP 500.00
+     * }</pre>
      */
     static Optional<SummaryBlock> parse(String raw) {
       var lines = raw.split("\n");
@@ -203,11 +209,11 @@ class SecurityBankEmailInvoiceProvider implements InvoiceProvider {
               .toFormatter();
       var dueDate = LocalDate.parse(dueDateLine, dueDateFormatter);
 
-      var totalAmountLine = lines[5].trim().substring("TOTAL AMOUNT DUE PHP ".length());
-      var totalAmount = Double.parseDouble(totalAmountLine);
-      var total = Money.of(CurrencyUnit.of("PHP"), totalAmount);
+      var totalAmountLine = lines[5].trim().substring("TOTAL AMOUNT DUE ".length());
+      totalAmountLine = totalAmountLine.replace(",", "");
+      var totalAmount = Money.parse(totalAmountLine);
 
-      var block = new SummaryBlock(accountNumber, dueDate, total);
+      var block = new SummaryBlock(accountNumber, dueDate, totalAmount);
       return Optional.of(block);
     }
   }
