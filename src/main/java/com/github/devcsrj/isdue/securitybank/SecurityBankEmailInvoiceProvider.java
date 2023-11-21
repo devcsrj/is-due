@@ -27,7 +27,6 @@ import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageTree;
 import org.apache.pdfbox.text.PDFTextStripperByArea;
-import org.joda.money.CurrencyUnit;
 import org.joda.money.Money;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -181,13 +180,13 @@ class SecurityBankEmailInvoiceProvider implements InvoiceProvider {
      * Parses the raw text into a {@link SummaryBlock}.
      *
      * <pre>{@code
-     *  CREDIT CARD ACCOUNT NUMBER
-     *  xxxx-xxxx-xxxx-xxxx
-     *  CUT-OFF STATEMENT DATE 24 OCT 2023
-     *  PAYMENT DUE DATE 14 NOV 2023
-     *  CREDIT LIMIT PHP 400,000.00
-     *  TOTAL AMOUNT DUE PHP 549.00
-     *  MINIMUM AMOUNT DUE PHP 500.00
+     * CREDIT CARD ACCOUNT NUMBER
+     * xxxx-xxxx-xxxx-xxxx
+     * CUT-OFF STATEMENT DATE 24 OCT 2023
+     * PAYMENT DUE DATE 14 NOV 2023
+     * CREDIT LIMIT PHP 400,000.00
+     * TOTAL AMOUNT DUE PHP 549.00
+     * MINIMUM AMOUNT DUE PHP 500.00
      * }</pre>
      */
     static Optional<SummaryBlock> parse(String raw) {
