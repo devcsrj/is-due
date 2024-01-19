@@ -2,6 +2,8 @@
 
 [![Java CI](https://github.com/devcsrj/is-due/actions/workflows/gradle.yml/badge.svg)](https://github.com/devcsrj/is-due/actions/workflows/gradle.yml)
 ![GitHub License](https://img.shields.io/github/license/devcsrj/is-due)
+<a href="https://www.buymeacoffee.com/devcsrj" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="25" width="120"></a>
+
 
 Your one-stop app for managing Philippine service provider invoices.
 
