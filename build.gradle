@@ -35,7 +35,7 @@ dependencies {
     implementation 'org.joda:joda-money:1.0.4'
     implementation 'org.jsoup:jsoup:1.16.2'
     implementation 'org.apache.pdfbox:pdfbox:3.0.0'
-    runtimeOnly 'org.xerial:sqlite-jdbc:3.44.0.0'
+    runtimeOnly 'org.xerial:sqlite-jdbc:3.45.0.0'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
     annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
